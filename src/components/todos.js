@@ -13,7 +13,7 @@ class Todos extends Component {
         this.sendData = this.sendData.bind(this)
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.getPosts()
     }
 
@@ -51,7 +51,7 @@ class Todos extends Component {
     }
 
     handleChange(e) {
-      
+
         this.setState({
             [e.target.id]: e.target.value
         })
@@ -60,7 +60,7 @@ class Todos extends Component {
     }
 
 
-    sendData= async (e)=> {
+    sendData = async (e) => {
         const data = {
             title: this.state.title,
             checked: false,
@@ -77,7 +77,7 @@ class Todos extends Component {
             .then((json) =>
                 console.log(" Registro agregado con exito: ", json)
             );
-            this.getPosts();
+        this.getPosts();
     }
 
     render() {
