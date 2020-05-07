@@ -31,7 +31,7 @@ class Todos extends Component {
     handleRenderTodos = () => {
         const { todos } = this.state;
         if (!todos.length) return;
-        const listOfTodos = todos.map((item) => (
+        const listOfTodos = todos.reverse().map((item) => (
             <>
                 {!item.checked && <TodoItem getPosts={this.getPosts} key={item._id} item={item} title={item.title} description={item.description} checked={item.checked} />}
             </>
@@ -42,7 +42,7 @@ class Todos extends Component {
     handleRenderCompletes = () => {
         const { todos } = this.state;
         if (!todos.length) return;
-        const listOfTodos = todos.map((item) => (
+        const listOfTodos = todos.reverse().map((item) => (
             <>
                 {item.checked && <TodoItem getPosts={this.getPosts} key={item._id} item={item} title={item.title} description={item.description} checked={item.checked} />}
             </>
