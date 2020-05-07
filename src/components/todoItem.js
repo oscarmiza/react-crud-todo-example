@@ -53,7 +53,7 @@ handleChecked = (e)=>{
 toggleAsw = () => {
     if (!this.props.checked) {
         return (<li key={this.state.id} className="ui-state-default border-top">
-            <div className="checkbox rounded-top text-primary">
+            <div className="checkbox rounded-top   btn-outline-dark">
                 <label>
                     <input onChange={this.handleChecked} type="checkbox" checked={this.props.checked} value="" />{this.props.title}</label>
                 <button onClick={this.handleDelete} type="button" className="close" aria-label="Delete">
@@ -65,14 +65,14 @@ toggleAsw = () => {
     } else {
         return (
             <li key={this.state.id} className="ui-state-default border-top">
-                <div className="checkbox rounded-top text-secondary">
+                <div className="checkbox rounded-top   btn-outline-dark">
                     <label>
                         <input type="checkbox" onChange={this.handleChecked} checked={this.props.checked} value="" />{this.props.title}</label>
                     <button onClick={this.handleDelete} type="button" className="close" aria-label="Delete">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div className='alert btn-outline-secondary'><p>{this.props.description}</p></div>
+                <div className='alert alert-primary'><p>{this.props.description}</p></div>
             </li>
         )
     }
