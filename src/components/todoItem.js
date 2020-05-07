@@ -65,7 +65,7 @@ toggleAsw = () => {
     } else {
         return (
             <li key={this.state.id} className="ui-state-default border-top">
-                <div className="checkbox rounded-top   btn-outline-dark">
+                <div className="checkbox rounded-top   btn-outline-primary">
                     <label>
                         <input type="checkbox" onChange={this.handleChecked} checked={this.props.checked} value="" />{this.props.title}</label>
                     <button onClick={this.handleDelete} type="button" className="close" aria-label="Delete">
