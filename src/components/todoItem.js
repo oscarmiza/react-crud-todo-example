@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { getTodos } from '../redux/actions'
+import { connect } from 'react-redux';
+
 
 class TodoItem extends Component {
     constructor(props) {
@@ -24,7 +27,7 @@ class TodoItem extends Component {
             .then((response) => response.json())
             .then((json) =>{
                 console.log(" Registro actualizado con exito: ", json)
-                this.props.getPosts();
+                this.props.getTodosRedux();
             }
             );
     }
@@ -32,15 +35,16 @@ class TodoItem extends Component {
 handleDelete = async () => {
     const url = `${this.state.endpoint}${this.state.id}${this.state.user}`;
     
+    // eslint-disable-next-line no-unused-vars
     const res = await fetch(url, { method: "DELETE" })
         .then((response) => response.json())
         .then((json) =>{
             this.setState({
                 todos: json,
             })
-            this.props.getPosts()
+            this.props.getTodosRedux()
         });
-            
+
 
 }
 
@@ -84,4 +88,11 @@ toggleAsw = () => {
     }
 }
 
-export default TodoItem;
+
+const mapDispatchToProps = dispatch => {
+    return {
+        // dispatching plain actions
+        getTodosRedux: () => dispatch(getTodos()),
+    }
+}
+export default connect(null,mapDispatchToProps)(TodoItem);

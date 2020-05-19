@@ -3,7 +3,7 @@ import TodoItem from '../components/TodoItem'
 import Loader from '../components/Loader'
 import "./todos.css"
 import { connect } from 'react-redux'
-import { getTodos } from '../redux/actions'
+import { getTodos, postTodos } from '../redux/actions'
 
 
 
@@ -19,7 +19,6 @@ class Todos extends Component {
     //     this.handleChange = this.handleChange.bind(this)
     //     this.sendData = this.sendData.bind(this)
     // }
-
 
 
     componentDidMount() {
@@ -87,7 +86,7 @@ class Todos extends Component {
             .then((response) => response.json())
             .then((json) =>
                 // conso+le.log(" Registro agregado con exito: ", json)
-                this.getPosts()
+                this.props.getTodosRedux()
             );
     }
 
@@ -102,8 +101,8 @@ class Todos extends Component {
                             <h1>Agregar Tarea</h1>
 
                             <hr></hr>
-                            <input type="text" id="title" onChange={this.handleChange} className="form-control add-todo" placeholder="Titulo:"></input>
-                            <input type="text" id="description" onChange={this.handleChange} className="form-control add-todo" placeholder="Descripciòn:"></input>
+                            <input type="text" id="title" onChange={this.handleChange.bind(this)} className="form-control add-todo" placeholder="Titulo:"></input>
+                            <input type="text" id="description" onChange={this.handleChange.bind(this)} className="form-control add-todo" placeholder="Descripciòn:"></input>
                             <button id="checkAll" onClick={this.sendData} className="btn btn-primary mt-3">Enviar</button> <button id="checkAll" onClick={this.getPosts} className="btn btn-primary mt-3">Buscar</button>
                         </div>
                         <div className="col-md-4">
@@ -150,6 +149,7 @@ const mapDispatchToProps = dispatch => {
     return {
         // dispatching plain actions
         getTodosRedux: () => dispatch(getTodos()),
+        postTodosRedux: () => dispatch(postTodos())
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Todos);

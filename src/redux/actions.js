@@ -26,3 +26,19 @@ export function start() {
         type: 'TODO_START'
     }
 }
+
+export function postTodos() {
+    return async (dispatch) => {
+        dispatch(start());
+        try {
+            const response = await fetch(
+                "https://todo-checkpoint-api.herokuapp.com/api/todos/oscar"
+            );
+            const Todos = await response.json();
+                dispatch(getTodosSuccess(Todos));
+            
+        } catch (error) {
+            dispatch({ type: "TODO_FAIL", error });
+        }
+    };
+}
