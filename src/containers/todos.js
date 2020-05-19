@@ -9,34 +9,10 @@ import { getTodos, postTodos } from '../redux/actions'
 
 class Todos extends Component {
     state = {}
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //         todos: []
-    //     }
-
-    //     this.handleRenderTodos = this.handleRenderTodos.bind(this)
-    //     this.handleChange = this.handleChange.bind(this)
-    //     this.sendData = this.sendData.bind(this)
-    // }
-
 
     componentDidMount() {
         this.props.getTodosRedux()
-        // console.log("this.props.getTodosRedux: ",this.props.getTodosRedux())
-        // console.log("this.props.todos: ",this.props.todos)
     }
-
-    // getPosts = () => {
-    //     fetch("https://todo-checkpoint-api.herokuapp.com/api/todos/oscar", { method: "GET" })
-    //         .then((response) => response.json())
-    //         .then((json) =>
-    //             this.setState({
-    //                 todos: json,
-    //             })
-    //         );
-
-    // };
 
     handleRenderTodos = () => {
         const {todos} = this.props;
@@ -61,12 +37,9 @@ class Todos extends Component {
     }
 
     handleChange(e) {
-
         this.setState({
             [e.target.id]: e.target.value
         })
-
-        // console.log(this.state)
     }
 
 
@@ -85,7 +58,6 @@ class Todos extends Component {
         })
             .then((response) => response.json())
             .then((json) =>
-                // conso+le.log(" Registro agregado con exito: ", json)
                 this.props.getTodosRedux()
             );
     }
@@ -114,7 +86,6 @@ class Todos extends Component {
                                     <Loader>
                                     {this.handleRenderTodos()}
                                     </Loader>
-                                    {/* {this.props.getTodosRedux()} */}
                                 </ul>
                             </div>
                         </div>
