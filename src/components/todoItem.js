@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class todoItem extends Component {
+class TodoItem extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -22,10 +22,11 @@ class todoItem extends Component {
             }
         })
             .then((response) => response.json())
-            .then((json) =>
+            .then((json) =>{
                 console.log(" Registro actualizado con exito: ", json)
+                this.props.getPosts();
+            }
             );
-            this.props.getPosts();
     }
 
 handleDelete = async () => {
@@ -33,15 +34,13 @@ handleDelete = async () => {
     
     const res = await fetch(url, { method: "DELETE" })
         .then((response) => response.json())
-        .then((json) =>
+        .then((json) =>{
             this.setState({
                 todos: json,
             })
+            this.props.getPosts()
+        });
             
-            
-        );
-
-    this.props.getPosts()
 
 }
 
@@ -80,9 +79,9 @@ toggleAsw = () => {
 
     render() {
 
-        let ans = this.toggleAsw()
-        return (<>{ans}</>);
+        // let ans = this.toggleAsw()
+        return (<>{this.toggleAsw()}</>);
     }
 }
 
-export default todoItem;
+export default TodoItem;
