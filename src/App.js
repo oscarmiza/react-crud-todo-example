@@ -1,7 +1,7 @@
 import React from "react";
-import Header from "./components/Header";
-import Todos from "./containers/todos";
+import Header from "./components/Header.js";
 import Loader from "./components/Loader";
+import Todos from "./containers/todos";
 import "bootstrap/dist/css/bootstrap.css"
 import "./App.css";
 
